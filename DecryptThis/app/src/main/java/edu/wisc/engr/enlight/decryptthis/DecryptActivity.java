@@ -1,11 +1,11 @@
 package edu.wisc.engr.enlight.decryptthis;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class DecryptActivity extends AppCompatActivity {
+public class DecryptActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
