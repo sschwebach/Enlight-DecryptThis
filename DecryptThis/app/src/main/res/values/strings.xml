@@ -2,5 +2,7 @@
     <string name="app_name">DecryptThis</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="server_waiting">Waiting for a new image...</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_receive">ReceiveActivity</string>
 </resources>
