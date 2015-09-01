@@ -21,19 +21,30 @@ import java.util.Map;
 
 public class ReceiveActivity extends Activity implements FirebaseEventListener {
 
-    String messageStringKey, messageStringValue;
-    String imageStringKey, imageStringValue;
+    String messageStringValue;
+    String messageStringKey = "key";
+    String imageStringValue;
+    String imageStringKey = "image";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
+        Log.e("Create", "OnCreate called");
         Firebase.setAndroidContext(this);
-        if (DataHolder.getInstance() == null) {
+        DataHolder.createDataHolder();
+        DataHolder.getInstance().setFirebaseEventListener(this);
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.e("Resume", "OnResume called");
+        if (DataHolder.getInstance() == null){
             DataHolder.createDataHolder();
         }
         DataHolder.getInstance().setFirebaseEventListener(this);
-
     }
 
     @Override
@@ -70,7 +81,7 @@ public class ReceiveActivity extends Activity implements FirebaseEventListener {
         Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         DataHolder.getInstance().bitmap = decodedByte;
         Log.e("Data Received", "Starting decrypt activity with message: " + messageStringValue);
-
+        DataHolder.getInstance().setFirebaseEventListener(null);
         /** Called when the user clicks the Send button */
 
         Intent intent = new Intent(ReceiveActivity.this, DecryptActivity.class);

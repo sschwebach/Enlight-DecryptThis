@@ -28,12 +28,12 @@ public class DataHolder {
     private FirebaseEventListener mListener;
 
     private DataHolder() {
-        mFirebase = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com/");
-        mFirebase.child(dataBaseStringKey).addValueEventListener(new ValueEventListener() {
+        mFirebase = new Firebase("https://decryptthis.firebaseio.com");
+        mFirebase.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (mListener != null){
+                if (mListener != null) {
                     mListener.onDatabaseUpdated(dataSnapshot);
                 }
             }
